@@ -33,6 +33,6 @@ export const styles = StyleSheet.create({
 		alignSelf: "flex-end",
 		alignItems: "flex-end",
 		fontWeight: "bold",
-		color: COLORS.BLUE,
+		color: COLORS.GREEN,
 	},
 });

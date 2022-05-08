@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
 		backgroundColor: COLORS.WHITE,
 		margin: 16,
 		borderRadius: 10,
-		flex: 1,
+		paddingBottom: 20,
 	},
 
 	title: {
@@ -22,20 +22,27 @@ export const styles = StyleSheet.create({
 		marginBottom: 20,
 	},
 
-	buttons: {
-		flexDirection: "row",
-		alignSelf: "center",
+	box: {
+		marginHorizontal: 20,
 		marginBottom: 20,
 	},
 
-	textButton: {
-		color: COLORS.GRAY,
-		paddingVertical: 2,
-		paddingHorizontal: 4,
-		borderRadius: 4,
+	subTitles: {
+		color: COLORS.DARK_GRAY,
+		fontSize: 16,
+	},
+
+	input: {
+		borderBottomWidth: 1,
 		borderColor: COLORS.GRAY,
+	},
+
+	checkBox: {
+		height: 20,
+		width: 20,
 		borderWidth: 1,
-		marginHorizontal: 20,
-		fontSize: 14,
+		borderRadius: 10,
+		borderColor: COLORS.DARK_GREEN,
+		backgroundColor: COLORS.DARK_GREEN,
 	},
 });

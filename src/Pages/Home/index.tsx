@@ -45,10 +45,10 @@ const Home = ({ navigation }: HomeProps) => {
 			</View>
 			<View style={styles.line} />
 			<View style={styles.buttons}>
-				<TouchableOpacity>
+				<TouchableOpacity onPress={() => navigation.navigate("Add")}>
 					<Text style={styles.textButton}>Adicionar despesa</Text>
 				</TouchableOpacity>
-				<TouchableOpacity>
+				<TouchableOpacity onPress={() => navigation.navigate("List")}>
 					<Text style={styles.textButton}>Listar despesas</Text>
 				</TouchableOpacity>
 			</View>
