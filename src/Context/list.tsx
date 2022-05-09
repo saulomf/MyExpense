@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react";
 
-interface expenseData {
-	_id?: string;
+export interface expenseData {
+	_id: string;
 	date: string;
 	item: string;
 	value: number;

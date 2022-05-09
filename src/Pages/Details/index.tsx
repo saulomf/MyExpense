@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, Text, FlatList, TouchableOpacity, Alert } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { styles } from "./styles";
@@ -12,12 +12,25 @@ type DetailsProps = NativeStackScreenProps<propsNavigationStack, "Details">;
 const Details = ({ navigation, route }: DetailsProps) => {
 	const { id } = route.params;
 	const listContext = useContext(ListContext);
-	const itemFromList = listContext.listData.filter(
-		(item) => item._id === id
-	)[0];
+	const [itemFromList, setItemFromList] = useState({
+		_id: "",
+		date: "",
+		item: "",
+		value: 0,
+		additionalInfo: {
+			type: "",
+		},
+	});
+
+	useEffect(() => {
+		const itemSelected = listContext.listData.filter(
+			(item) => item._id === id
+		)[0];
+		setItemFromList(itemSelected);
+	}, []);
 
 	const getIcon = () => {
-		let iconType = itemFromList?.additionalInfo.type;
+		let iconType = itemFromList.additionalInfo.type;
 		if (iconType === "food")
 			return (
 				<Ionicons name="restaurant-outline" size={40} color="black" />

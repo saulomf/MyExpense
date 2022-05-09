@@ -111,11 +111,17 @@ const Add = ({ navigation, route }: AddProps) => {
 			additionalInfo: { type: typesExpensesNames[index] },
 		};
 		const response = await apiPUT({ params: { id: id, expense: newData } });
-
-		if (response !== "error") {
-			listContext.updateExpense(newData, id);
-		}
-
+		if (response !== "error")
+			listContext.updateExpense(
+				{
+					_id: id,
+					date: date,
+					item: inputTextName,
+					value: parseInt(inputTextValue),
+					additionalInfo: { type: typesExpensesNames[index] },
+				},
+				id
+			);
 		response === "error"
 			? Alert.alert(
 					"Erro!",
