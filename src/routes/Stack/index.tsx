@@ -5,6 +5,7 @@ import COLORS from "../../Shared/colors";
 import Home from "../../Pages/Home";
 import List from "../../Pages/List";
 import Add from "../../Pages/Add";
+import Details from "../../Pages/Details";
 
 const { Navigator, Screen } =
 	createNativeStackNavigator<propsNavigationStack>();
@@ -19,9 +20,22 @@ const Stack = () => {
 				},
 			}}
 		>
-			<Screen name="Home" component={Home} />
-			<Screen name="List" component={List} />
-			<Screen name="Add" component={Add} />
+			<Screen
+				name="Home"
+				options={{ title: "Início" }}
+				component={Home}
+			/>
+			<Screen name="List" options={{ title: "Lista" }} component={List} />
+			<Screen
+				name="Add"
+				options={{ title: "Adicionar" }}
+				component={Add}
+			/>
+			<Screen
+				name="Details"
+				options={{ title: "Detalhes" }}
+				component={Details}
+			/>
 		</Navigator>
 	);
 };

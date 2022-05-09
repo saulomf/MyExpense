@@ -37,8 +37,10 @@ const CheckBox = ({ iconType, title, message, selected }: CheckBoxProps) => {
 			/>
 			<View style={styles.icon}>{getIcon()}</View>
 			<View style={styles.containerText}>
-				<Text>{title}</Text>
-				<Text>{message}</Text>
+				<Text style={styles.text}>{title}</Text>
+				{message !== "" ? (
+					<Text style={styles.text}>{message}</Text>
+				) : null}
 			</View>
 		</View>
 	);

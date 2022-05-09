@@ -26,11 +26,15 @@ export const styles = StyleSheet.create({
 	},
 
 	icon: {
-		marginLeft: 10,
+		marginLeft: 12,
 	},
 
 	containerText: {
 		flexDirection: "column",
 		marginLeft: 5,
+	},
+
+	text: {
+		color: COLORS.DARK_GRAY,
 	},
 });
