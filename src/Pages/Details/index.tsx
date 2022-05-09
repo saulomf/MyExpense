@@ -23,6 +23,7 @@ const Details = ({ navigation, route }: DetailsProps) => {
 	});
 
 	useEffect(() => {
+		//Get from global context the selected item from the previous screen
 		const itemSelected = listContext.listData.filter(
 			(item) => item._id === id
 		)[0];
@@ -30,6 +31,7 @@ const Details = ({ navigation, route }: DetailsProps) => {
 	}, []);
 
 	const getIcon = () => {
+		//Map the name of the icon on the item and return the real icon
 		let iconType = itemFromList.additionalInfo.type;
 		if (iconType === "food")
 			return (
@@ -46,6 +48,7 @@ const Details = ({ navigation, route }: DetailsProps) => {
 	};
 
 	const getTypeName = () => {
+		//Map the type names showed to the user and return one of them
 		let iconName = itemFromList.additionalInfo.type;
 		if (iconName === "food") return "Comida";
 		else if (iconName === "shop") return "Compras";
@@ -55,7 +58,8 @@ const Details = ({ navigation, route }: DetailsProps) => {
 	};
 
 	const deleteExpense = async () => {
-		const response = await apiDELETE({ params: "/" + id });
+		//Delete expense from global context and from api
+		const response = await apiDELETE({ params: "/" + id }); //Delete from api
 		response === "error"
 			? Alert.alert(
 					"Erro!",
@@ -69,7 +73,7 @@ const Details = ({ navigation, route }: DetailsProps) => {
 							text: "Ok",
 							onPress: () => {
 								navigation.goBack();
-								listContext.deleteLocalData(id);
+								listContext.deleteLocalData(id); //delete from global context
 							},
 							style: "cancel",
 						},
@@ -77,6 +81,7 @@ const Details = ({ navigation, route }: DetailsProps) => {
 					{
 						cancelable: true,
 						onDismiss: () => {
+							//delete from global context
 							navigation.goBack();
 							listContext.deleteLocalData(id);
 						},

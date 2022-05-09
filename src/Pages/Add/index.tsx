@@ -20,6 +20,7 @@ const Add = ({ navigation, route }: AddProps) => {
 	const [inputTextName, onChangeInputName] = useState("");
 	const [inputTextValue, onChangeInputValue] = useState("");
 	const [typesExpenses, setTypesExpenses] = useState([
+		//Array to control the checkboxes from item types
 		false,
 		false,
 		false,
@@ -28,6 +29,7 @@ const Add = ({ navigation, route }: AddProps) => {
 	]);
 
 	useEffect(() => {
+		//Change the title of this screen(used when you want to edit instead od create)
 		if (id !== "") {
 			navigation.setOptions({ title: "Editar" });
 			const itemFromList = listContext.listData.filter(
@@ -39,6 +41,7 @@ const Add = ({ navigation, route }: AddProps) => {
 	}, []);
 
 	const changeTypesState = ({ position }: changeTypesState) => {
+		//update the checkboxes
 		let newTypesstate = [...typesExpenses];
 		for (let index = 0; index < newTypesstate.length; index++) {
 			if (index !== position) newTypesstate[index] = false;
@@ -48,6 +51,7 @@ const Add = ({ navigation, route }: AddProps) => {
 	};
 
 	const addExpense = async () => {
+		//Add a expense in the global context and in the api
 		var date = new Date().toISOString().split("T")[0];
 		const typesExpensesNames = ["food", "shop", "car", "bill", "other"];
 
@@ -63,10 +67,11 @@ const Add = ({ navigation, route }: AddProps) => {
 			additionalInfo: { type: typesExpensesNames[index] },
 		};
 
-		const response = await apiPOST({ expense });
+		const response = await apiPOST({ expense }); //Add on api
 
 		if (response !== "error") {
 			listContext.addLocalData({
+				//Add in the global context
 				_id: response,
 				date: date,
 				item: inputTextName,
@@ -97,6 +102,7 @@ const Add = ({ navigation, route }: AddProps) => {
 	};
 
 	const updateExpense = async () => {
+		//Update a expense in the global context and in the api
 		var date = new Date().toISOString().split("T")[0];
 		const typesExpensesNames = ["food", "shop", "car", "bill", "other"];
 
@@ -110,9 +116,10 @@ const Add = ({ navigation, route }: AddProps) => {
 			value: parseInt(inputTextValue),
 			additionalInfo: { type: typesExpensesNames[index] },
 		};
-		const response = await apiPUT({ params: { id: id, expense: newData } });
+		const response = await apiPUT({ params: { id: id, expense: newData } }); //update in api
 		if (response !== "error")
 			listContext.updateExpense(
+				//local update
 				{
 					_id: id,
 					date: date,

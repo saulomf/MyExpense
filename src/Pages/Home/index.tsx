@@ -16,6 +16,7 @@ const Home = ({ navigation }: HomeProps) => {
 	}, []);
 
 	const getData = async () => {
+		//Get expenses from api
 		const response = await apiGET({ params: "?page=1&perPage=20" });
 		for (let i = 0; i < response.length; i++) {
 			listContext.addLocalData(response[i]);
@@ -23,6 +24,7 @@ const Home = ({ navigation }: HomeProps) => {
 	};
 
 	const getLastItems = () => {
+		//filter the 3 last items to show on the first screen
 		if (listContext.listData.length < 3) {
 			return listContext.listData;
 		} else
@@ -33,6 +35,7 @@ const Home = ({ navigation }: HomeProps) => {
 	};
 
 	const getMonthExpense = () => {
+		//Calculates the sum of all expenses
 		let monthCost = 0;
 		listContext.listData.forEach((item) => {
 			monthCost = monthCost + item.value;
