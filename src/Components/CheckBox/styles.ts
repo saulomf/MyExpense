@@ -5,10 +5,10 @@ export const styles = StyleSheet.create({
 	container: {
 		flexDirection: "row",
 		marginTop: 10,
+		alignItems: "center",
 	},
 
 	checkBoxSelected: {
-		alignSelf: "flex-start",
 		height: 20,
 		width: 20,
 		borderWidth: 1,
@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
 		width: 20,
 		borderWidth: 1,
 		borderRadius: 10,
-		borderColor: COLORS.GRAY,
+		borderColor: COLORS.GREEN,
 	},
 
 	icon: {

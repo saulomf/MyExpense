@@ -7,9 +7,20 @@ import { propsNavigationStack } from "../../routes/Stack/Models";
 import CheckBox from "../../Components/CheckBox";
 
 type AddProps = NativeStackScreenProps<propsNavigationStack, "Add">;
+type changeTypesState = {
+	position: number;
+};
+
 const Add = ({ navigation }: AddProps) => {
 	const [inputTextName, onChangeInputName] = useState("");
 	const [inputTextValue, onChangeInputValue] = useState("");
+	const [types, setTypes] = useState([true, false]);
+
+	const changeTypesState = ({ position }: changeTypesState) => {
+		let newTypesstate = types;
+		newTypesstate[position] = !types[position];
+		setTypes(newTypesstate);
+	};
 
 	return (
 		<View style={styles.container}>
@@ -39,59 +50,54 @@ const Add = ({ navigation }: AddProps) => {
 			</View>
 			<View style={styles.box}>
 				<Text style={styles.subTitles}>Tipo</Text>
-				<TouchableOpacity onPress={() => {}}>
+				<TouchableOpacity
+					onPress={() => {
+						changeTypesState({ position: 0 });
+					}}
+				>
 					<CheckBox
 						iconType="food"
 						title="Comida"
 						message="(Gastos em restaurantes, deliverys, etc...)"
+						selected={types[0]}
+					/>
+				</TouchableOpacity>
+				<TouchableOpacity onPress={() => {}}>
+					<CheckBox
+						iconType="shop"
+						title="Compras"
+						message="(Gastos em mercados, lojas online, etc...)"
 						selected={true}
 					/>
 				</TouchableOpacity>
-				{/* <TouchableOpacity
-					onPress={() => {
-						setTypes;
-					}}
-				>
+				<TouchableOpacity onPress={() => {}}>
 					<CheckBox
-						iconType="food"
-						message="Compras (Gastos em mercados, lojas online, etc...)"
-						selected={types[1]}
+						iconType="car"
+						title="Carro"
+						message="(Combustível, manutenção, etc...)"
+						selected={true}
 					/>
 				</TouchableOpacity>
-				<TouchableOpacity
-					onPress={() => {
-						setTypes;
-					}}
-				>
+				<TouchableOpacity onPress={() => {}}>
 					<CheckBox
-						iconType="food"
-						message="Carro (Combustível, manutenção, etc...)"
-						selected={types[2]}
+						iconType="bill"
+						title="Casa"
+						message="(Contas de energia, água, etc...)"
+						selected={true}
 					/>
 				</TouchableOpacity>
-				<TouchableOpacity
-					onPress={() => {
-						setTypes;
-					}}
-				>
+				<TouchableOpacity onPress={() => {}}>
 					<CheckBox
-						iconType="food"
-						message="Casa (Contas de energia, água, etc...)"
-						selected={types[3]}
+						iconType="other"
+						title="Outros"
+						message=""
+						selected={true}
 					/>
 				</TouchableOpacity>
-				<TouchableOpacity
-					onPress={() => {
-						setTypes;
-					}}
-				>
-					<CheckBox
-						iconType="food"
-						message="Outros"
-						selected={types[4]}
-					/>
-				</TouchableOpacity> */}
 			</View>
+			<TouchableOpacity style={styles.addButton}>
+				<Text>Adicionar</Text>
+			</TouchableOpacity>
 		</View>
 	);
 };

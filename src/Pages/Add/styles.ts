@@ -37,12 +37,10 @@ export const styles = StyleSheet.create({
 		borderColor: COLORS.GRAY,
 	},
 
-	checkBox: {
-		height: 20,
-		width: 20,
-		borderWidth: 1,
-		borderRadius: 10,
-		borderColor: COLORS.DARK_GREEN,
-		backgroundColor: COLORS.DARK_GREEN,
+	addButton: {
+		backgroundColor: COLORS.GREEN,
+		alignSelf: "center",
+		borderRadius: 5,
+		padding: 10,
 	},
 });
